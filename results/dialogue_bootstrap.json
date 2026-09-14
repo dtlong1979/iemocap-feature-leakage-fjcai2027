@@ -2,7 +2,7 @@
  "n_boot": 10000,
  "unit": "dialogue",
  "session_gap": {
-  "bert-base-uncased:released CNN (2017, label-fit)": {
+  "iemocap_session_gap_bert-base-uncased:released CNN (2017, label-fit)": {
    "gap": 0.31068519007520845,
    "ci95": [
     0.2604244363476702,
@@ -16,7 +16,7 @@
     0.3287376611446975
    ]
   },
-  "bert-base-uncased:frozen bert-base-uncased": {
+  "iemocap_session_gap_bert-base-uncased:frozen bert-base-uncased": {
    "gap": -0.07978562137527023,
    "ci95": [
     -0.14583768851110854,
@@ -30,7 +30,7 @@
     -0.06464376670023891
    ]
   },
-  "bert-base-uncased:audio (unsupervised, reference)": {
+  "iemocap_session_gap_bert-base-uncased:audio (unsupervised, reference)": {
    "gap": 0.05929071840963396,
    "ci95": [
     -0.01891230862719727,
@@ -39,7 +39,7 @@
    "dialogues_session4": 30,
    "dialogues_session5": 31
   },
-  "bert-base-uncased:video (released 3D-CNN)": {
+  "iemocap_session_gap_bert-base-uncased:video (released 3D-CNN)": {
    "gap": 0.1567855594349742,
    "ci95": [
     0.05690055707337918,
@@ -53,7 +53,7 @@
     0.1914221452694893
    ]
   },
-  "microsoft_deberta-v3-base:released CNN (2017, label-fit)": {
+  "iemocap_session_gap_roberta-base:released CNN (2017, label-fit)": {
    "gap": 0.31068519007520845,
    "ci95": [
     0.2592089955137591,
@@ -67,21 +67,21 @@
     0.3292268612833091
    ]
   },
-  "microsoft_deberta-v3-base:frozen microsoft/deberta-v3-base": {
-   "gap": -0.06933034389904391,
+  "iemocap_session_gap_roberta-base:frozen roberta-base": {
+   "gap": -0.07868903363358082,
    "ci95": [
-    -0.1373848283727595,
-    -0.0016620215640053223
+    -0.14959222346420653,
+    -0.005657463658993542
    ],
    "dialogues_session4": 30,
    "dialogues_session5": 31,
-   "gap_minus_audio": -0.12862106230867787,
+   "gap_minus_audio": -0.13797975204321478,
    "gap_minus_audio_ci95": [
-    -0.2035072600939214,
-    -0.054382232252627595
+    -0.21388385183870637,
+    -0.06125010930217077
    ]
   },
-  "microsoft_deberta-v3-base:audio (unsupervised, reference)": {
+  "iemocap_session_gap_roberta-base:audio (unsupervised, reference)": {
    "gap": 0.05929071840963396,
    "ci95": [
     -0.021838058677683833,
@@ -90,7 +90,7 @@
    "dialogues_session4": 30,
    "dialogues_session5": 31
   },
-  "microsoft_deberta-v3-base:video (released 3D-CNN)": {
+  "iemocap_session_gap_roberta-base:video (released 3D-CNN)": {
    "gap": 0.1567855594349742,
    "ci95": [
     0.05836825506728863,
@@ -104,7 +104,7 @@
     0.1935731419657836
    ]
   },
-  "roberta-base:released CNN (2017, label-fit)": {
+  "iemocap_session_gap_microsoft_deberta-v3-base:released CNN (2017, label-fit)": {
    "gap": 0.31068519007520845,
    "ci95": [
     0.2599593761229098,
@@ -118,21 +118,21 @@
     0.32785959174886736
    ]
   },
-  "roberta-base:frozen roberta-base": {
-   "gap": -0.07868903363358082,
+  "iemocap_session_gap_microsoft_deberta-v3-base:frozen microsoft/deberta-v3-base": {
+   "gap": -0.06933034389904391,
    "ci95": [
-    -0.14862702125445487,
-    -0.006011705903429927
+    -0.13630854689591468,
+    -0.0005057847289872205
    ],
    "dialogues_session4": 30,
    "dialogues_session5": 31,
-   "gap_minus_audio": -0.13797975204321478,
+   "gap_minus_audio": -0.12862106230867787,
    "gap_minus_audio_ci95": [
-    -0.212493962394914,
-    -0.06413385011067613
+    -0.2023651578518525,
+    -0.05749060547271039
    ]
   },
-  "roberta-base:audio (unsupervised, reference)": {
+  "iemocap_session_gap_microsoft_deberta-v3-base:audio (unsupervised, reference)": {
    "gap": 0.05929071840963396,
    "ci95": [
     -0.0199078438170078,
@@ -141,7 +141,7 @@
    "dialogues_session4": 30,
    "dialogues_session5": 31
   },
-  "roberta-base:video (released 3D-CNN)": {
+  "iemocap_session_gap_microsoft_deberta-v3-base:video (released 3D-CNN)": {
    "gap": 0.1567855594349742,
    "ci95": [
     0.05721698320989796,
@@ -157,7 +157,7 @@
   }
  },
  "loso": {
-  "iemocap_loso_dlg/bert+audio": {
+  "iemocap_loso/bert+audio": {
    "loso_mean": 0.6341857917325184,
    "standard": 0.6481823783117683,
    "inflation": -0.013996586579249848,
@@ -181,7 +181,7 @@
     "05": 31
    }
   },
-  "iemocap_loso_dlg/bert": {
+  "iemocap_loso/bert": {
    "loso_mean": 0.5968116188207706,
    "standard": 0.6459231875128364,
    "inflation": -0.04911156869206579,
@@ -205,7 +205,7 @@
     "05": 31
    }
   },
-  "iemocap_loso_dlg/deberta": {
+  "iemocap_loso/deberta": {
    "loso_mean": 0.5651038071921375,
    "standard": 0.6171698500718834,
    "inflation": -0.05206604287974592,
@@ -229,7 +229,7 @@
     "05": 31
    }
   },
-  "iemocap_loso_dlg/released-audio": {
+  "iemocap_loso/released-audio": {
    "loso_mean": 0.5090423586524935,
    "standard": 0.47730540151981926,
    "inflation": 0.031736957132674215,
@@ -253,7 +253,7 @@
     "05": 31
    }
   },
-  "iemocap_loso_dlg/released-tav": {
+  "iemocap_loso/released-tav": {
    "loso_mean": 0.8370927841571042,
    "standard": 0.5723967960566853,
    "inflation": 0.26469598810041894,
@@ -277,7 +277,7 @@
     "05": 31
    }
   },
-  "iemocap_loso_dlg/released-text": {
+  "iemocap_loso/released-text": {
    "loso_mean": 0.835094241996396,
    "standard": 0.5953994660094476,
    "inflation": 0.23969477598694844,
@@ -301,7 +301,7 @@
     "05": 31
    }
   },
-  "iemocap_loso_dlg/released-video": {
+  "iemocap_loso/released-video": {
    "loso_mean": 0.4917552812102105,
    "standard": 0.33086876155268025,
    "inflation": 0.16088651965753026,
@@ -325,7 +325,7 @@
     "05": 31
    }
   },
-  "iemocap_loso_dlg/roberta": {
+  "iemocap_loso/roberta": {
    "loso_mean": 0.6051439969036465,
    "standard": 0.64284247278702,
    "inflation": -0.037698475883373495,
@@ -349,7 +349,7 @@
     "05": 31
    }
   },
-  "iemocap_loso_mmgcn_dlg/released-audio": {
+  "iemocap_loso_mmgcn/released-audio": {
    "loso_mean": 0.4877543865668422,
    "standard": 0.50564797699733,
    "inflation": -0.01789359043048777,
@@ -373,7 +373,7 @@
     "05": 31
    }
   },
-  "iemocap_loso_mmgcn_dlg/released-tav": {
+  "iemocap_loso_mmgcn/released-tav": {
    "loso_mean": 0.8133261537995855,
    "standard": 0.6325734237009654,
    "inflation": 0.18075273009862014,
@@ -397,21 +397,45 @@
     "05": 31
    }
   },
-  "iemocap_loso_mmgcn_dlg/released-video": {
+  "iemocap_loso_mmgcn/released-text": {
+   "loso_mean": 0.835094241996396,
+   "standard": 0.5953994660094476,
+   "inflation": 0.23969477598694844,
+   "inflation_ci95": [
+    0.2016204282662436,
+    0.28062622882371924
+   ],
+   "loso_mean_ci95": [
+    0.8222962093069968,
+    0.8476145236548734
+   ],
+   "standard_ci95": [
+    0.5450686069129639,
+    0.6419106623159009
+   ],
+   "dialogues_per_fold": {
+    "01": 28,
+    "02": 30,
+    "03": 32,
+    "04": 30,
+    "05": 31
+   }
+  },
+  "iemocap_loso_mmgcn/released-video": {
    "loso_mean": 0.34815793355490593,
    "standard": 0.3509960977613473,
    "inflation": -0.002838164206441396,
    "inflation_ci95": [
-    -0.07021018273596707,
-    0.06401408401426374
+    -0.07076938403520226,
+    0.0649191211186659
    ],
    "loso_mean_ci95": [
-    0.31810190504090274,
-    0.37953600888728356
+    0.3175492224752717,
+    0.37888389677760625
    ],
    "standard_ci95": [
-    0.2744692459911665,
-    0.43025937852901136
+    0.2741008026440037,
+    0.4282348325545575
    ],
    "dialogues_per_fold": {
     "01": 28,

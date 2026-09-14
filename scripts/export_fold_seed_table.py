@@ -22,8 +22,10 @@ def loso_bilstm(rows):
                         rows.append(('loso', 'bi-LSTM', f"{source}: {d['config']}", f'session {s}', 'other four sessions', seed, metric, v))
 
 def session_gap(rows):
-    for p in sorted((R / 'iemocap_session_gap_dlg').glob('*.json')):
+    for p in sorted(R.glob('iemocap_session_gap_*.json')):
         d = load(p)
+        if 'dialogues' not in d:
+            continue
         for name, blocks in d['dialogues'].items():
             for key, test, train in (('session4', 'session 04', 'sessions 01-03'), ('session5', 'session 05', 'sessions 01-04')):
                 b = blocks[key]
