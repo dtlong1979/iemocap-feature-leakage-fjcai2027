@@ -1,0 +1,18 @@
+# iemocap-feature-leakage-fjcai2027
+
+- `scripts/fetch_features.py`: released MOSI, MOSEI and IEMOCAP feature files, with MD5 check
+- `experiments/mosi_mosei_headroom.py`: bi-LSTM reader; MOSI and MOSEI held-out versus test
+- `experiments/iemocap_text_reextract.py`: frozen-encoder text features; session-4 versus session-5 gap
+- `experiments/iemocap_session_stats.py`: class balance per session
+- `experiments/iemocap_loso.py`: leave-one-session-out with the bi-LSTM, per-emotion recall
+- `experiments/iemocap_loso_linear.py`: leave-one-session-out with a linear probe
+- `experiments/iemocap_matched_gap.py`: session gap with three training sessions per fold, PCA projection
+- `experiments/iemocap_protocols.py`: leave-one-speaker-out and random dialogue-level cross-validation
+- `experiments/iemocap_knn_diagnostic.py`: nearest-neighbour label agreement per session
+- `experiments/iemocap_ranking.py`: rank agreement between protocols
+- `experiments/dialoguecrn_loso.py`: DialogueCRN under leave-one-session-out
+- `experiments/iemocap_feature_provenance.py`: utterance-level comparison of the released feature files
+- `experiments/feature_file_md5.py`: MD5 digests of the feature files
+- `experiments/iemocap_context.py`: frozen text fused with released audio and visual blocks
+- `src/uacmd/__init__.py`: package
+- `src/uacmd/metrics.py`: accuracy, weighted and macro F1, kappa, MCC, majority-class baseline
