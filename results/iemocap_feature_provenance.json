@@ -1,0 +1,90 @@
+{
+ "files": {
+  "bc-LSTM": {
+   "file": "IEMOCAP_features_raw.pkl",
+   "sha256": "9b54a6c1c86d034088b2975ad40a8158ceef4dd116d92da2c1a75d36db1a2f25"
+  },
+  "DialogueGCN": {
+   "file": "iemocap_features_dialoguegcn.pkl",
+   "sha256": "18915267dfbb6fa8812c42757b148b143fab35e3fa525c0997763635825eefac"
+  },
+  "MMGCN": {
+   "file": "iemocap_features_mmgcn.pkl",
+   "sha256": "ceb5cc9a45d1792998438e27f86a12642320aa6315546e4425316140ea503fb3"
+  }
+ },
+ "structure": {
+  "DialogueGCN": {
+   "same_dialogues": true,
+   "same_utterance_ids": true,
+   "same_labels": true,
+   "same_split": true
+  },
+  "MMGCN": {
+   "same_dialogues": true,
+   "same_utterance_ids": true,
+   "same_labels": true,
+   "same_split": true
+  }
+ },
+ "blocks": {
+  "DialogueGCN": {
+   "text": {
+    "identical": true,
+    "dims": [
+     100,
+     100
+    ],
+    "utterances_identical": 7433,
+    "utterances": 7433,
+    "max_abs_diff": 0.0
+   },
+   "audio": {
+    "identical": true,
+    "dims": [
+     100,
+     100
+    ],
+    "utterances_identical": 7433,
+    "utterances": 7433,
+    "max_abs_diff": 0.0
+   },
+   "video": {
+    "identical": true,
+    "dims": [
+     512,
+     512
+    ],
+    "utterances_identical": 7433,
+    "utterances": 7433,
+    "max_abs_diff": 0.0
+   }
+  },
+  "MMGCN": {
+   "text": {
+    "identical": true,
+    "dims": [
+     100,
+     100
+    ],
+    "utterances_identical": 7433,
+    "utterances": 7433,
+    "max_abs_diff": 0.0
+   },
+   "audio": {
+    "identical": false,
+    "dims": [
+     100,
+     1582
+    ]
+   },
+   "video": {
+    "identical": false,
+    "dims": [
+     512,
+     342
+    ]
+   }
+  }
+ }
+}

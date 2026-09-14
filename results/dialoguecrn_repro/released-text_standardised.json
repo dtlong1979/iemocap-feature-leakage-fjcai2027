@@ -1,0 +1,47 @@
+{
+ "config": "released-text",
+ "blocks": [
+  "txt"
+ ],
+ "model": "DialogueCRN (ACL 2021)",
+ "hyperparameters": {
+  "base_model": "LSTM",
+  "base_layer": 2,
+  "hidden_size": 100,
+  "dropout": 0.2,
+  "reason_steps": [
+   3,
+   4
+  ],
+  "lr": 0.0001,
+  "l2": 0.0002,
+  "batch_size": 32,
+  "gamma": 0
+ },
+ "standardised": true,
+ "valid_rate": 0.1,
+ "epochs": 100,
+ "patience": 20,
+ "pickle": "IEMOCAP_features_raw.pkl",
+ "folds": {
+  "05": {
+   "acc": 0.5847196549599507,
+   "w_f1": 0.5866275663355447,
+   "runs": [
+    {
+     "valid": 0.9167837530529869,
+     "acc": 0.5847196549599507,
+     "w_f1": 0.5866275663355447,
+     "epoch": 86,
+     "seconds": 923.1
+    }
+   ]
+  }
+ },
+ "summary": {
+  "loso_mean_acc": 0.5847196549599507,
+  "standard_split_acc": 0.5847196549599507,
+  "folds_1_to_4_mean_acc": null,
+  "inflation_acc": 0.0
+ }
+}

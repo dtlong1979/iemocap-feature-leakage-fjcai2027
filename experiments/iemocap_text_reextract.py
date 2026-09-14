@@ -69,8 +69,18 @@ def evaluate(raw, text_src, channel, seeds):
         xt, yt, mt = pack(raw, text_src, tr_v, maxlen, channel)
         xe, ye, me = pack(raw, text_src, te_v, maxlen, channel)
         xt, xe = H.standardise(xt, xe, mt)
-        return float(np.mean([H.run_one(torch.from_numpy(xt), torch.from_numpy(yt), torch.from_numpy(mt), torch.from_numpy(xe), torch.from_numpy(ye), torch.from_numpy(me), 6, s)[0]['acc'] for s in seeds]))
-    return (run(fit4, val4), run(raw['tr'], raw['te']))
+        y_true = ye[me > 0]
+        dlg = np.concatenate([[i] * len(raw['lab'][v]) for i, v in enumerate(te_v)])
+        accs, correct = ([], [])
+        for s in seeds:
+            out = H.run_one(torch.from_numpy(xt), torch.from_numpy(yt), torch.from_numpy(mt), torch.from_numpy(xe), torch.from_numpy(ye), torch.from_numpy(me), 6, s)
+            accs.append(out[0]['acc'])
+            hit = out[1].argmax(-1).numpy() == y_true
+            correct.append(np.bincount(dlg, weights=hit, minlength=len(te_v)).astype(int).tolist())
+        detail = {'ids': list(te_v), 'n': [int(len(raw['lab'][v])) for v in te_v], 'correct_by_seed': correct}
+        return (float(np.mean(accs)), detail)
+    (a4, d4), (a5, d5) = (run(fit4, val4), run(raw['tr'], raw['te']))
+    return (a4, a5, {'session4': d4, 'session5': d5})
 
 def main() -> None:
     ap = argparse.ArgumentParser()
@@ -101,13 +111,13 @@ def main() -> None:
     print(f'\ntext features: released CNN {dim_old}-d, frozen {args.model} {dim_new}-d')
     print(f'{args.seeds} seeds, same architecture and protocol for both\n')
     print(f"{'text features':>34} {'hold out ses.4':>15} {'hold out ses.5':>15} {'gap':>8}")
-    rows = {}
+    rows, details = ({}, {})
     for name, src in (('released CNN (2017, label-fit)', raw['txt']), (f'frozen {args.model}', new_text)):
-        a4, a5 = evaluate(raw, src, 'text', seeds)
+        a4, a5, details[name] = evaluate(raw, src, 'text', seeds)
         rows[name] = (a4, a5)
         print(f'{name:>34} {a4 * 100:14.2f}% {a5 * 100:14.2f}% {(a4 - a5) * 100:+7.2f}')
     for channel, label in (('audio', 'audio (unsupervised, reference)'), ('video', 'video (released 3D-CNN)')):
-        a4, a5 = evaluate(raw, raw['txt'], channel, seeds)
+        a4, a5, details[label] = evaluate(raw, raw['txt'], channel, seeds)
         rows[label] = (a4, a5)
         print(f'{label:>34} {a4 * 100:14.2f}% {a5 * 100:14.2f}% {(a4 - a5) * 100:+7.2f}')
     old_gap = rows['released CNN (2017, label-fit)'][0] - rows['released CNN (2017, label-fit)'][1]
@@ -117,7 +127,7 @@ def main() -> None:
     print('  survives, something other than supervised feature extraction causes it.')
     if args.out:
         args.out.parent.mkdir(parents=True, exist_ok=True)
-        args.out.write_text(__import__('json').dumps({'model': args.model, 'seeds': seeds, 'pickle': str(args.pickle), 'hold_out_session_4_vs_5': {k: {'acc_session4': v[0], 'acc_session5': v[1], 'gap': v[0] - v[1]} for k, v in rows.items()}}, indent=2))
+        args.out.write_text(__import__('json').dumps({'model': args.model, 'seeds': seeds, 'pickle': str(args.pickle), 'hold_out_session_4_vs_5': {k: {'acc_session4': v[0], 'acc_session5': v[1], 'gap': v[0] - v[1]} for k, v in rows.items()}, 'dialogues': details}, indent=2))
         print(f'written to {args.out}')
 if __name__ == '__main__':
     main()

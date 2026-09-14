@@ -1,0 +1,39 @@
+{
+ "reader": "multinomial logistic regression, per utterance",
+ "utterances": 7433,
+ "cpu": "Intel64 Family 6 Model 151 Stepping 2, GenuineIntel",
+ "blocks": {
+  "released-text": {
+   "acc_session4": 0.875,
+   "acc_session5": 0.49661121380160195,
+   "gap": 0.37838878619839805,
+   "seconds": 0.19421580000016547,
+   "dim": 100,
+   "gap_minus_audio": 0.3368284775401227
+  },
+  "released-audio": {
+   "acc_session4": 0.4365079365079365,
+   "acc_session5": 0.39494762784966114,
+   "gap": 0.04156030865827537,
+   "seconds": 0.7874518000007811,
+   "dim": 100,
+   "gap_minus_audio": 0.0
+  },
+  "released-video": {
+   "acc_session4": 0.3869047619047619,
+   "acc_session5": 0.24830560690080097,
+   "gap": 0.13859915500396094,
+   "seconds": 1.5020506999990175,
+   "dim": 512,
+   "gap_minus_audio": 0.09703884634568558
+  },
+  "bert": {
+   "acc_session4": 0.42592592592592593,
+   "acc_session5": 0.43068391866913125,
+   "gap": -0.004757992743205319,
+   "seconds": 2.531943500000125,
+   "dim": 768,
+   "gap_minus_audio": -0.04631830140148069
+  }
+ }
+}

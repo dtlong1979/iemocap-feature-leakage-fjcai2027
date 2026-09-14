@@ -1,0 +1,37 @@
+{
+ "config": "bert",
+ "protocol": "random",
+ "blocks": [
+  "bert"
+ ],
+ "pickle": "IEMOCAP_features_raw.pkl",
+ "runs": [
+  {
+   "seed": 0,
+   "acc": 0.6079644827122292,
+   "acc_sessions_1_to_4_utterances": 0.5996557659208261,
+   "acc_session_5_utterances": 0.6377079482439926,
+   "share_sessions_1_to_4": 0.7816494013184447
+  },
+  {
+   "seed": 1,
+   "acc": 0.5908785147316024,
+   "acc_sessions_1_to_4_utterances": 0.5790017211703958,
+   "acc_session_5_utterances": 0.6333949476278496,
+   "share_sessions_1_to_4": 0.7816494013184447
+  },
+  {
+   "seed": 2,
+   "acc": 0.5859007130364591,
+   "acc_sessions_1_to_4_utterances": 0.5750430292598967,
+   "acc_session_5_utterances": 0.6247689463955638,
+   "share_sessions_1_to_4": 0.7816494013184447
+  }
+ ],
+ "summary": {
+  "acc": 0.5949145701600969,
+  "acc_sessions_1_to_4_utterances": 0.5845668387837062,
+  "acc_session_5_utterances": 0.631957280755802,
+  "share_sessions_1_to_4": 0.7816494013184446
+ }
+}

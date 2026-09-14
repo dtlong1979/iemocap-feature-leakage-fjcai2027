@@ -1,0 +1,19 @@
+{
+ "bc-LSTM release (IEMOCAP_features_raw.pkl)": {
+  "md5": "811b524cc12e5ff99434a19b9ff48704",
+  "bytes": 74460840
+ },
+ "DialogueGCN release (IEMOCAP_features.pkl)": {
+  "md5": "3cdadaf6c3c93f0212a8c61483552964",
+  "bytes": 23536767
+ },
+ "DialogueCRN release (data/iemocap/IEMOCAP_features.pkl)": {
+  "md5": "3cdadaf6c3c93f0212a8c61483552964",
+  "bytes": 23536767
+ },
+ "MMGCN release (IEMOCAP_features.pkl)": {
+  "md5": "69739ee5180f64efc13462ab3ad39062",
+  "bytes": 72216498
+ },
+ "_note": "Files with an identical md5 are byte-identical distributions of the same feature file: DialogueGCN release (IEMOCAP_features.pkl); DialogueCRN release (data/iemocap/IEMOCAP_features.pkl)"
+}

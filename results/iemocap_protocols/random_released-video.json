@@ -1,0 +1,37 @@
+{
+ "config": "released-video",
+ "protocol": "random",
+ "blocks": [
+  "vis"
+ ],
+ "pickle": "IEMOCAP_features_raw.pkl",
+ "runs": [
+  {
+   "seed": 0,
+   "acc": 0.5167496300282524,
+   "acc_sessions_1_to_4_utterances": 0.5593803786574871,
+   "acc_session_5_utterances": 0.36414048059149723,
+   "share_sessions_1_to_4": 0.7816494013184447
+  },
+  {
+   "seed": 1,
+   "acc": 0.5039687878380197,
+   "acc_sessions_1_to_4_utterances": 0.5483648881239243,
+   "acc_session_5_utterances": 0.3450400492914356,
+   "share_sessions_1_to_4": 0.7816494013184447
+  },
+  {
+   "seed": 2,
+   "acc": 0.4867482846764429,
+   "acc_sessions_1_to_4_utterances": 0.5201376936316695,
+   "acc_session_5_utterances": 0.3672211953173136,
+   "share_sessions_1_to_4": 0.7816494013184447
+  }
+ ],
+ "summary": {
+  "acc": 0.5024889008475716,
+  "acc_sessions_1_to_4_utterances": 0.5426276534710269,
+  "acc_session_5_utterances": 0.35880057506674884,
+  "share_sessions_1_to_4": 0.7816494013184446
+ }
+}

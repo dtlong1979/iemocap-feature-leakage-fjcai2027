@@ -1,0 +1,37 @@
+{
+ "config": "released-audio",
+ "protocol": "random",
+ "blocks": [
+  "aud"
+ ],
+ "pickle": "IEMOCAP_features_raw.pkl",
+ "runs": [
+  {
+   "seed": 0,
+   "acc": 0.5269743037804386,
+   "acc_sessions_1_to_4_utterances": 0.5273666092943201,
+   "acc_session_5_utterances": 0.5255699322242761,
+   "share_sessions_1_to_4": 0.7816494013184447
+  },
+  {
+   "seed": 1,
+   "acc": 0.5116372931521593,
+   "acc_sessions_1_to_4_utterances": 0.5215146299483648,
+   "acc_session_5_utterances": 0.4762784966112138,
+   "share_sessions_1_to_4": 0.7816494013184447
+  },
+  {
+   "seed": 2,
+   "acc": 0.5057177451903673,
+   "acc_sessions_1_to_4_utterances": 0.5098106712564544,
+   "acc_session_5_utterances": 0.4910659272951325,
+   "share_sessions_1_to_4": 0.7816494013184447
+  }
+ ],
+ "summary": {
+  "acc": 0.5147764473743218,
+  "acc_sessions_1_to_4_utterances": 0.5195639701663798,
+  "acc_session_5_utterances": 0.49763811871020747,
+  "share_sessions_1_to_4": 0.7816494013184446
+ }
+}

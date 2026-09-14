@@ -1,0 +1,31 @@
+{
+ "model": "roberta-base",
+ "seeds": [
+  0,
+  1,
+  2
+ ],
+ "pickle": "IEMOCAP_features_raw.pkl",
+ "hold_out_session_4_vs_5": {
+  "released CNN (2017, label-fit)": {
+   "acc_session4": 0.9045414462081128,
+   "acc_session5": 0.5935510371739577,
+   "gap": 0.3109904090341551
+  },
+  "frozen roberta-base": {
+   "acc_session4": 0.5679012345679012,
+   "acc_session5": 0.645101663585952,
+   "gap": -0.0772004290180508
+  },
+  "audio (unsupervised, reference)": {
+   "acc_session4": 0.5412257495590829,
+   "acc_session5": 0.4801807352639145,
+   "gap": 0.06104501429516834
+  },
+  "video (released 3D-CNN)": {
+   "acc_session4": 0.4878747795414462,
+   "acc_session5": 0.31402752105155063,
+   "gap": 0.17384725848989557
+  }
+ }
+}

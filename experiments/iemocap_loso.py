@@ -69,6 +69,8 @@ def main() -> None:
             outs = [H.run_one(torch.from_numpy(xt), torch.from_numpy(yt), torch.from_numpy(mt), torch.from_numpy(xe), torch.from_numpy(ye), torch.from_numpy(me), 6, sd) for sd in seeds]
             folds[s] = H.aggregate([o[0] for o in outs])
             y_true = ye[me > 0]
+            dlg = np.concatenate([[i] * len(raw['lab'][v]) for i, v in enumerate(te)])
+            folds[s]['dialogues'] = {'ids': te, 'n': [int(len(raw['lab'][v])) for v in te], 'correct_by_seed': [np.bincount(dlg, weights=o[1].argmax(-1).numpy() == y_true, minlength=len(te)).astype(int).tolist() for o in outs]}
             folds[s]['recall'] = {emo: float(np.mean([(o[1].argmax(-1).numpy()[y_true == k] == k).mean() for o in outs])) for k, emo in enumerate(EMOTIONS) if (y_true == k).any()}
             print(f"  {name:15s} hold out session {s}: acc={folds[s]['acc']['mean'] * 100:6.2f} wF1={folds[s]['w_f1']['mean'] * 100:6.2f}", flush=True)
         accs = [folds[s]['acc']['mean'] for s in SESSIONS]

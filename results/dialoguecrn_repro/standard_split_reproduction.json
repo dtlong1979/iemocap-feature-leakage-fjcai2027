@@ -1,0 +1,32 @@
+{
+ "what": "DialogueCRN (ACL 2021) run from its own code release on the IEMOCAP standard split (train sessions 1-4, test session 5), released text features, one seed.",
+ "published_reference": {
+  "source": "DialogueCRN README, IEMOCAP text-only row",
+  "acc": 66.05,
+  "w_f1": 66.2,
+  "selection": "repository default valid_rate=0, i.e. the best epoch is chosen on the test set, and the shell script reports the best of 25 step_s/step_p combinations"
+ },
+ "ours": {
+  "standardised": {
+   "acc": 0.5847196549599507,
+   "w_f1": 0.5866275663355447,
+   "best_epoch": 86,
+   "seconds": 923.1,
+   "standardised": true,
+   "valid_rate": 0.1,
+   "epochs": 100,
+   "patience": 20
+  },
+  "raw": {
+   "acc": 0.5834873690696242,
+   "w_f1": 0.5828033478309,
+   "best_epoch": 90,
+   "seconds": 918.5,
+   "standardised": false,
+   "valid_rate": 0.1,
+   "epochs": 100,
+   "patience": 20
+  }
+ },
+ "reading": "We do not reproduce the published number. With the repository's default reasoning steps (3,4), one seed, and the epoch chosen on held-out training dialogues instead of the test fold, the same code scores about 58.4 accuracy. Standardising the features changes this by 0.1 points, so the symmetric standardisation used for the leave-one-session-out comparison does not favour either feature block."
+}

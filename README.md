@@ -9,11 +9,18 @@
 - `experiments/iemocap_matched_gap.py`: session gap with three training sessions per fold, PCA projection
 - `experiments/iemocap_protocols.py`: leave-one-speaker-out and random dialogue-level cross-validation
 - `experiments/iemocap_knn_diagnostic.py`: nearest-neighbour label agreement per session
+- `experiments/iemocap_gap_linear.py`: session gap with a linear probe, timed
+- `experiments/dialogue_bootstrap.py`: dialogue-level bootstrap intervals for the session gap and LOSO inflation
+- `scripts/export_fold_seed_table.py`: one row per experiment, fold, seed and metric
 - `experiments/iemocap_ranking.py`: rank agreement between protocols
-- `experiments/dialoguecrn_loso.py`: DialogueCRN under leave-one-session-out
+- `experiments/dialoguecrn_loso.py`: DialogueCRN leakage stress test under leave-one-session-out
 - `experiments/iemocap_feature_provenance.py`: utterance-level comparison of the released feature files
 - `experiments/feature_file_md5.py`: MD5 digests of the feature files
 - `experiments/iemocap_context.py`: frozen text fused with released audio and visual blocks
 - `src/uacmd/__init__.py`: package
 - `src/uacmd/metrics.py`: accuracy, weighted and macro F1, kappa, MCC, majority-class baseline
+- `results/`: 71 result files, per fold and per seed
+- `docs/usage_audit.md`
+- `docs/dialoguecrn_stress_test.md`
+- `docs/mosi_mosei_heldout.md`
 - https://github.com/zerohd4869/DialogueCRN: DialogueCRN release (commit 2c2070d, MIT License), read by experiments/dialoguecrn_loso.py

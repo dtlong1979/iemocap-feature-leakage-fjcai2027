@@ -1,0 +1,37 @@
+{
+ "config": "released-text",
+ "protocol": "random",
+ "blocks": [
+  "txt"
+ ],
+ "pickle": "IEMOCAP_features_raw.pkl",
+ "runs": [
+  {
+   "seed": 0,
+   "acc": 0.8452845419077089,
+   "acc_sessions_1_to_4_utterances": 0.9154905335628227,
+   "acc_session_5_utterances": 0.5939617991373999,
+   "share_sessions_1_to_4": 0.7816494013184447
+  },
+  {
+   "seed": 1,
+   "acc": 0.8428629086506121,
+   "acc_sessions_1_to_4_utterances": 0.9080895008605852,
+   "acc_session_5_utterances": 0.6093653727664818,
+   "share_sessions_1_to_4": 0.7816494013184447
+  },
+  {
+   "seed": 2,
+   "acc": 0.8302166016413292,
+   "acc_sessions_1_to_4_utterances": 0.8989672977624785,
+   "acc_session_5_utterances": 0.5841035120147874,
+   "share_sessions_1_to_4": 0.7816494013184447
+  }
+ ],
+ "summary": {
+  "acc": 0.83945468406655,
+  "acc_sessions_1_to_4_utterances": 0.9075157773952954,
+  "acc_session_5_utterances": 0.5958102279728896,
+  "share_sessions_1_to_4": 0.7816494013184446
+ }
+}
