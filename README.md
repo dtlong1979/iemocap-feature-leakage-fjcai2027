@@ -16,3 +16,4 @@
 - `experiments/iemocap_context.py`: frozen text fused with released audio and visual blocks
 - `src/uacmd/__init__.py`: package
 - `src/uacmd/metrics.py`: accuracy, weighted and macro F1, kappa, MCC, majority-class baseline
+- https://github.com/zerohd4869/DialogueCRN: DialogueCRN release (commit 2c2070d, MIT License), read by experiments/dialoguecrn_loso.py
