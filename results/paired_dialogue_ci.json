@@ -1,0 +1,65 @@
+{
+ "n_boot": 10000,
+ "unit": "dialogue",
+ "refit_control": {
+  "fixed_difference": 0.161859257968463,
+  "refit_difference": -0.026333845700667546,
+  "leak_estimate": 0.18819310366913056,
+  "ci95": [
+   0.16903926244438452,
+   0.20852085656465616
+  ],
+  "fixed_ci95": [
+   0.12046113423524622,
+   0.20403625083014162
+  ],
+  "refit_ci95": [
+   -0.07176647819674095,
+   0.01908595144953133
+  ]
+ },
+ "fusion": {
+  "iemocap_context_bert:no-context": {
+   "difference": -0.031546518792359646,
+   "ci95": [
+    -0.07398298577706715,
+    0.006792091583667442
+   ]
+  },
+  "iemocap_context_bert_text+audio:no-context": {
+   "difference": 0.01638940234134345,
+   "ci95": [
+    -0.011977056811831255,
+    0.040993103886050986
+   ]
+  },
+  "iemocap_context_bert_text+video:no-context": {
+   "difference": -0.06592729513247059,
+   "ci95": [
+    -0.10189757496516065,
+    -0.03201328786021914
+   ]
+  },
+  "iemocap_context_bert:context": {
+   "difference": -0.06592729513247075,
+   "ci95": [
+    -0.12338896597493774,
+    -0.014438329183021913
+   ]
+  },
+  "iemocap_context_bert_text+audio:context": {
+   "difference": 0.003696857670979825,
+   "ci95": [
+    -0.026153003385769487,
+    0.028722048305599348
+   ]
+  },
+  "iemocap_context_bert_text+video:context": {
+   "difference": -0.08897104128157729,
+   "ci95": [
+    -0.14119775579273583,
+    -0.04351021984968733
+   ]
+  }
+ }
+}

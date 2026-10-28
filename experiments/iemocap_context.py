@@ -39,7 +39,7 @@ def load_iemocap(path: Path, text_features: Path | None=None) -> dict:
         return (feats, y, m, s)
     f_tr, y_tr, m_tr, s_tr = pack(tr)
     f_te, y_te, m_te, s_te = pack(te)
-    return {'feats': {k: (f_tr[k], f_te[k]) for k in f_tr}, 'y': (y_tr, y_te), 'mask': (m_tr, m_te), 'speaker': (s_tr, s_te), 'num_classes': 6, 'n_dialogues': (len(tr), len(te))}
+    return {'feats': {k: (f_tr[k], f_te[k]) for k in f_tr}, 'y': (y_tr, y_te), 'mask': (m_tr, m_te), 'speaker': (s_tr, s_te), 'num_classes': 6, 'n_dialogues': (len(tr), len(te)), 'test_ids': te, 'test_sizes': [len(lab[v]) for v in te]}
 
 def label_only_references(data: dict) -> dict:
     from uacmd.metrics import classification_metrics
@@ -83,8 +83,13 @@ def run_grid(data: dict, seeds: list[int]) -> dict:
                 sel = m_te > 0
                 a_te, b_te = (x_te[sel].unsqueeze(1), y_te[sel].unsqueeze(1))
                 c_te = torch.ones_like(b_te, dtype=m_te.dtype)
-            runs = [H.run_one(a_tr, b_tr, c_tr, a_te, b_te, c_te, data['num_classes'], s)[0] for s in seeds]
+            outs = [H.run_one(a_tr, b_tr, c_tr, a_te, b_te, c_te, data['num_classes'], s) for s in seeds]
+            runs = [o[0] for o in outs]
             agg = {k: {'mean': float(np.mean([r[k] for r in runs])), 'std': float(np.std([r[k] for r in runs], ddof=1)) if len(runs) > 1 else 0.0, 'runs': [float(r[k]) for r in runs]} for k in runs[0]}
+            sizes = data['test_sizes']
+            dlg = np.concatenate([[i] * n for i, n in enumerate(sizes)])
+            y_flat = b_te.numpy().reshape(-1)[c_te.numpy().reshape(-1) > 0]
+            agg['dialogues'] = {'ids': list(data['test_ids']), 'n': [int(n) for n in sizes], 'correct_by_seed': [np.bincount(dlg, weights=o[1].argmax(-1).numpy() == y_flat, minlength=len(sizes)).astype(int).tolist() for o in outs]}
             key = f"{cell}/{('context' if ctx else 'no-context')}"
             cells[key] = agg
             print(f"  {data.get('name', 'IEMOCAP')} {key:22s} acc={agg['acc']['mean'] * 100:6.2f} wF1={agg['w_f1']['mean'] * 100:6.2f} macroF1={agg['macro_f1']['mean'] * 100:6.2f} kappa={agg['kappa']['mean']:.3f}", flush=True)

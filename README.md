@@ -10,6 +10,8 @@
 - `experiments/iemocap_protocols.py`: leave-one-speaker-out and random dialogue-level cross-validation
 - `experiments/iemocap_knn_diagnostic.py`: nearest-neighbour label agreement per session
 - `experiments/iemocap_gap_linear.py`: session gap with a linear probe, timed
+- `experiments/iemocap_refit_control.py`: text CNN fitted once on sessions 1-4 against the same CNN refitted inside each fold
+- `experiments/paired_dialogue_ci.py`: paired dialogue-level intervals for the refit control and the fusion rows
 - `experiments/dialogue_bootstrap.py`: dialogue-level bootstrap intervals for the session gap and LOSO inflation
 - `scripts/export_fold_seed_table.py`: one row per experiment, fold, seed and metric
 - `experiments/iemocap_ranking.py`: rank agreement between protocols
@@ -19,7 +21,7 @@
 - `experiments/iemocap_context.py`: frozen text fused with released audio and visual blocks
 - `src/uacmd/__init__.py`: package
 - `src/uacmd/metrics.py`: accuracy, weighted and macro F1, kappa, MCC, majority-class baseline
-- `results/`: 57 result files, per fold and per seed
+- `results/`: 59 result files, per fold and per seed
 - `docs/usage_audit.md`
 - `docs/dialoguecrn_stress_test.md`
 - `docs/mosi_mosei_heldout.md`
