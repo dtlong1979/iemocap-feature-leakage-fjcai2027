@@ -99,11 +99,13 @@ def extract(model, ids, index, raw, device, batch=256):
         out[v][i] = row
     return out
 
-def read_with_bilstm(raw, block, train_vids, test_vids, maxlen, seeds):
-    xt, yt, mt = L.pack(raw, [block], train_vids, maxlen)
-    xe, ye, me = L.pack(raw, [block], test_vids, maxlen)
-    xt, xe = H.standardise(xt, xe, mt)
-    outs = [H.run_one(torch.from_numpy(xt), torch.from_numpy(yt), torch.from_numpy(mt), torch.from_numpy(xe), torch.from_numpy(ye), torch.from_numpy(me), 6, s) for s in seeds]
+def read_with_bilstm(raw, blocks, train_vids, test_vids, maxlen, seeds):
+    outs = []
+    for seed, block in zip(seeds, blocks):
+        xt, yt, mt = L.pack(raw, [block], train_vids, maxlen)
+        xe, ye, me = L.pack(raw, [block], test_vids, maxlen)
+        xt, xe = H.standardise(xt, xe, mt)
+        outs.append(H.run_one(torch.from_numpy(xt), torch.from_numpy(yt), torch.from_numpy(mt), torch.from_numpy(xe), torch.from_numpy(ye), torch.from_numpy(me), 6, seed))
     fold = H.aggregate([o[0] for o in outs])
     y_true = ye[me > 0]
     dlg = np.concatenate([[i] * len(raw['lab'][v]) for i, v in enumerate(test_vids)])
@@ -127,23 +129,27 @@ def main() -> None:
     ids, labels, index = encode_ids(raw, vids, vocab)
     pos = {v: [k for k, (vv, _) in enumerate(index) if vv == v] for v in vids}
     print(f'device {device}; {len(vocab)} word types, {len(ids)} utterances', flush=True)
-    result = {'conditions': {}, 'vocabulary': len(vocab), 'seeds': seeds, 'extractor': 'text CNN, widths 3/4/5, 50 maps, 100-d dense, six-way softmax'}
+    result = {'conditions': {}, 'vocabulary': len(vocab), 'seeds': seeds, 'seed_varies': 'extractor and reader', 'extractor': 'text CNN, 300-d learned embeddings, widths 3/4/5 with 50 maps each, 100-d dense, six-way softmax, Adam 1e-3, batch 64, <=20 epochs, patience 4 on 10% of the fitting utterances'}
     for condition in ('fixed', 'refit'):
         folds, extractor_acc = ({}, {})
         if condition == 'fixed':
             train_idx = np.concatenate([pos[v] for v in vids if session[v] != '05'])
-            model, acc = train_extractor(ids[train_idx], labels[train_idx], len(vocab), 6, 0, device)
-            block = extract(model, ids, index, raw, device)
-            extractor_acc['sessions 01-04'] = acc
+            blocks = []
+            for seed in seeds:
+                model, acc = train_extractor(ids[train_idx], labels[train_idx], len(vocab), 6, seed, device)
+                blocks.append(extract(model, ids, index, raw, device))
+                extractor_acc[f'sessions 01-04, seed {seed}'] = acc
         for s in SESSIONS:
             te = [v for v in vids if session[v] == s]
             tr = [v for v in vids if session[v] != s]
             if condition == 'refit':
                 train_idx = np.concatenate([pos[v] for v in tr])
-                model, acc = train_extractor(ids[train_idx], labels[train_idx], len(vocab), 6, 0, device)
-                block = extract(model, ids, index, raw, device)
-                extractor_acc[f'without session {s}'] = acc
-            folds[s] = read_with_bilstm(raw, block, tr, te, maxlen, seeds)
+                blocks = []
+                for seed in seeds:
+                    model, acc = train_extractor(ids[train_idx], labels[train_idx], len(vocab), 6, seed, device)
+                    blocks.append(extract(model, ids, index, raw, device))
+                    extractor_acc[f'without session {s}, seed {seed}'] = acc
+            folds[s] = read_with_bilstm(raw, blocks, tr, te, maxlen, seeds)
             print(f"  {condition:5s} hold out session {s}: acc={folds[s]['acc']['mean'] * 100:6.2f}", flush=True)
         accs = [folds[s]['acc']['mean'] for s in SESSIONS]
         result['conditions'][condition] = {'folds': folds, 'extractor_validation_acc': extractor_acc, 'summary': {'loso_mean_acc': float(np.mean(accs)), 'standard_split_acc': folds['05']['acc']['mean'], 'folds_1_to_4_mean_acc': float(np.mean(accs[:4])), 'difference_acc': float(np.mean(accs) - folds['05']['acc']['mean'])}}
